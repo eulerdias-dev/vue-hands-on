@@ -1,10 +1,10 @@
 import MenuAplicacao from "../models/menu/menuAplicacao";
 
 export default class MenuBuilder {
-  public gerar(): MenuAplicacao[] {
+  public static gerar(): MenuAplicacao[] {
     return [
       {
-        menu: "Filmes",
+        titulo: "Filmes",
         submenus: [
             {
                 titulo: "Populares",
@@ -25,7 +25,7 @@ export default class MenuBuilder {
         ]
       },
       {
-          menu: "Séries",
+        titulo: "Séries",
           submenus: [
             {
                 titulo: "Populares",
