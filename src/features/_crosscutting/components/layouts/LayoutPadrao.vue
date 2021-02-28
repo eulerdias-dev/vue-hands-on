@@ -10,7 +10,7 @@
         <v-spacer></v-spacer>
         <menus-auxiliares />
       </v-toolbar>
-      <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+      <v-navigation-drawer v-model="drawer" absolute temporary>
         <menu-principal />
       </v-navigation-drawer>
     </header>
@@ -29,8 +29,8 @@ import { MenusAuxiliares, MenuPrincipal } from "../unicos/toolbar";
 @Component({
   components: {
     MenusAuxiliares,
-    MenuPrincipal,
-  },
+    MenuPrincipal
+  }
 })
 export default class LayoutPadrao extends Vue {
   private drawer = false;
