@@ -1,13 +1,13 @@
 <template>
   <section id="menus-auxiliares">
     <v-btn icon>
-      <v-icon>mdi-movie-search-outline</v-icon>
+      <v-icon>mdi-magnify</v-icon>
     </v-btn>
     <v-btn icon>
-      <v-icon>mdi-export</v-icon>
+      <v-icon>mdi-movie</v-icon>
     </v-btn>
     <v-btn icon>
-      <v-icon>mdi-export</v-icon>
+      <v-icon>mdi-dots-vertical</v-icon>
     </v-btn>
   </section>
 </template>
