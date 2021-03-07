@@ -4,8 +4,8 @@
       <span class="text-caption pl-2">IMDB: {{ info.vote_average }}</span>
       <v-spacer></v-spacer>
       <v-btn icon>
-        <v-icon small @click="lidarComSolicitacaoParaFavoritos"
-          >mdi-heart</v-icon
+        <v-icon small @click.stop="lidarComSolicitacaoParaFavoritos"
+          :color="existeIdNoFavoritos ? 'accent' : ''">mdi-heart</v-icon
         >
       </v-btn>
     </v-card-actions>
@@ -28,11 +28,27 @@ export default class CardExibicaoAcoesComuns extends Vue {
     id: number;
   };
 
+  private get obterFavoritos(): FavoritoModel[] {
+    return this.info.type === HobbyTypeEnum.filme
+      ? vxm.vxmPersistent.persistent.favoritos.obterFilmesFavoritados
+      : vxm.vxmPersistent.persistent.favoritos.obterSeriesFavoritadas;
+  }
+
+  private get existeIdNoFavoritos(): boolean {
+    return (
+      this.obterFavoritos.find(
+        (hobby) =>
+          hobby.tipoHobby === this.info.type && hobby.id === this.info.id
+      ) !== undefined
+    );
+  }
+
   private lidarComSolicitacaoParaFavoritos(): void {
     const favorito = new FavoritoModel(this.info.id, this.info.type);
-    if (!vxm.vxmPersistent.persistent.favoritos.existeIdNoFavoritos(favorito)) {
-      throw new Error("not implemented method");
-    }
+
+    !this.existeIdNoFavoritos
+      ? vxm.vxmPersistent.persistent.favoritos.adicionarAosFavoritos(favorito)
+      : vxm.vxmPersistent.persistent.favoritos.removerDosFavoritos(favorito);
   }
 }
 </script>

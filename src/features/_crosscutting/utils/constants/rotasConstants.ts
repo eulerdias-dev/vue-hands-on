@@ -5,4 +5,5 @@ export default class RotasConstants {
     public static readonly FILMES_NOS_CINEMAS = `/filmes/${FilmeTypeEnum.nowPlaying}`;
     public static readonly FILMES_MAIS_VOTADOS = `/filmes/${FilmeTypeEnum.topRated}`;
     public static readonly FILMES_LANCAMENTOS = `/filmes/${FilmeTypeEnum.upcoming}`;
-}
+    public static readonly DESCRICAO_FILME = '/filme/:id/descricao'
+};

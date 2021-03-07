@@ -1,11 +1,12 @@
 <template>
   <section id="listagem-filmes">
     <v-row>
-      <v-col cols="6" class="py-0" md="2" v-for="(filme, i) in filmes" :key="i">
+      <v-col cols="6" class="py-0" md="2" v-for="(filme, i) in filmes" :key="i" @click="lidarComSolicitacaoDeDetalhes(filme)">
         <card-exibicao
           :info="{ title: filme.title, poster_path: filme.poster_path }"
+
         >
-          <v-divider></v-divider>
+          <v-divider dark></v-divider>
           <card-exibicao-acoes-comuns
             :info="{
               vote_average: filme.vote_average,
@@ -16,7 +17,6 @@
         </card-exibicao>
       </v-col>
     </v-row>
-    {{ bottom }}
   </section>
 </template>
 <style scoped></style>
@@ -30,6 +30,7 @@ import CardExibicao from "../../_crosscutting/components/cards/CardExibicao.vue"
 import FilmeModel from "../models/filmeModel";
 import CardExibicaoAcoesComuns from "../../_crosscutting/components/cards/slots/CardExibicaoAcoesComuns.vue";
 import { HobbyTypeEnum } from "../../_crosscutting/utils/enum/hobbyTypeEnum";
+import DetalhesModel from "@/features/_crosscutting/models/DetalhesModel";
 
 @Component({
   components: {
@@ -40,7 +41,6 @@ import { HobbyTypeEnum } from "../../_crosscutting/utils/enum/hobbyTypeEnum";
 export default class Filmes extends Vue {
   private type!: string;
   private tipoHobby = HobbyTypeEnum.filme;
-  private bottom = false;
 
   private get ultimaPaginaPesquisada(): number {
     return vxm.filme.obterUltimaPaginaPesquisa;
@@ -68,6 +68,11 @@ export default class Filmes extends Vue {
       this.ultimaPaginaPesquisada + 1
     );
     vxm.filme.carregarFilmes(request);
+  }
+
+  private lidarComSolicitacaoDeDetalhes(filme: FilmeModel): void {
+    const detalhes = filme as DetalhesModel;
+    this.$router.push()
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <section id="layout-padrao">
     <header>
-      <v-toolbar dark prominent>
+      <v-toolbar dark prominent color="primary">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>
           <span class="text-h6">{{ titulo }}</span>
@@ -15,7 +15,7 @@
       </v-navigation-drawer>
     </header>
     <v-main>
-      <v-container fluid>
+      <v-container fluid class="mt-4">
         <router-view></router-view>
       </v-container>
     </v-main>

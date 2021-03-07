@@ -1,4 +1,4 @@
-import { VuexModule, Module, Mutation, Action } from "vuex-module-decorators";
+import { VuexModule, Module, Mutation } from "vuex-module-decorators";
 import FavoritoModel from "../models/favoritoModel";
 import { HobbyTypeEnum } from "../utils/enum/hobbyTypeEnum";
 @Module({
@@ -19,13 +19,15 @@ export default class FavoritosStore extends VuexModule {
     );
   }
 
-  @Action
-  public async existeIdNoFavoritos(favorito: FavoritoModel): Promise<boolean> {
-    return (
-      this.favoritos.find(
-        (hobby) =>
-          hobby.tipoHobby === favorito.tipoHobby && hobby.id === favorito.id
-      ) !== undefined
+  @Mutation
+  public adicionarAosFavoritos(favorito: FavoritoModel): void {
+    this.favoritos.push(favorito);
+  }
+
+  @Mutation
+  public removerDosFavoritos(favorito: FavoritoModel): void {
+    this.favoritos = this.favoritos.filter(
+      (fav) => !(fav.id === favorito.id && fav.tipoHobby === favorito.tipoHobby)
     );
   }
 }

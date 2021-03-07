@@ -1,9 +1,13 @@
 <template>
-  <v-app id="app-filmes-e-series">
+  <v-app id="app-filmes-e-series" class="background">
     <component :is="layout"> </component>
   </v-app>
 </template>
-<style scoped></style>
+<style scoped>
+.background {
+  background-color: #37474f !important;
+}
+</style>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
