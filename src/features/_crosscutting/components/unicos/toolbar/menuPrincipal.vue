@@ -6,7 +6,7 @@
         height="200px"
       ></v-img>
     </v-card>
-    <v-list id="menu-principal" shaped>
+    <v-list id="menu-principal">
       <v-list-group
         :value="i"
         v-for="(menu, i) in menus"
@@ -30,15 +30,11 @@
 </template>
 <style scoped></style>
 <script lang="ts">
-import MenuBuilder from "@/features/_crosscutting/helpers/menuBuilder";
+import MenuBuilder from "@/features/_crosscutting/utils/helpers/menuBuilder";
 import MenuAplicacao from "@/features/_crosscutting/models/menu/menuAplicacao";
 import { Vue, Component } from "vue-property-decorator";
 @Component({})
 export default class MenuPrincipal extends Vue {
   private menus: MenuAplicacao[] = MenuBuilder.gerar();
-
-  mounted() {
-    console.log(this.menus);
-  }
 }
 </script>

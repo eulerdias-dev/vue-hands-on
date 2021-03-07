@@ -1,8 +1,6 @@
 <template>
   <v-app id="app-filmes-e-series">
-    <component :is="layout">
-      <router-view></router-view>
-    </component>
+    <component :is="layout"> </component>
   </v-app>
 </template>
 <style scoped></style>

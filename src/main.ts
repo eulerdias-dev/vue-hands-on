@@ -1,8 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
+import router from "./config/router";
 import store from "./store";
-import axios from "axios";
-import qs from "qs";
+import { AxiosPlugin } from "./config/plugins/axios";
 import vuetify from "./config/plugins/vuetify";
 import makeServer from "./config/miragejs";
 import {
@@ -11,10 +11,8 @@ import {
 } from "./features/_crosscutting/components/layouts"
 
 Vue.config.productionTip = false;
-axios.defaults.paramsSerializer = (params: any) => {
-  return qs.stringify(params, { arrayFormat: "indices" });
-};
 
+Vue.use(AxiosPlugin);
 Vue.component("layout-vazio", LayoutVazio);
 Vue.component("layout-padrao", LayoutPadrao);
 
@@ -23,6 +21,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 new Vue({
+  router,
   store,
   vuetify,
   render: (h) => h(App)

@@ -1,4 +1,4 @@
-import MenuAplicacao from "../models/menu/menuAplicacao";
+import MenuAplicacao from "../../models/menu/menuAplicacao";
 
 export default class MenuBuilder {
   public static gerar(): MenuAplicacao[] {
